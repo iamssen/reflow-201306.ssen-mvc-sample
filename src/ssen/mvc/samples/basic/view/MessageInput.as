@@ -26,6 +26,8 @@ package ssen.mvc.samples.basic.view {
 
 		public function clearText():void {
 			textInput.text="";
+			refreshSubmitButtonEnabled();
+			focusManager.setFocus(textInput);
 		}
 
 		public function deconstruct():void {
