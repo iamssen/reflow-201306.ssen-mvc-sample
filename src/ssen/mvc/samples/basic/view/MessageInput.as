@@ -1,8 +1,11 @@
 package ssen.mvc.samples.basic.view {
 
 	import flash.events.Event;
+	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
-	
+
+	import mx.events.FlexEvent;
+
 	import spark.components.Button;
 	import spark.components.TextInput;
 	import spark.components.supportClasses.SkinnableComponent;
@@ -39,11 +42,11 @@ package ssen.mvc.samples.basic.view {
 
 			if (instance === textInput) {
 				textInput.addEventListener(TextOperationEvent.CHANGE, textChange, false, 0, true);
+				textInput.addEventListener(FlexEvent.ENTER, enter, false, 0, true);
 			} else if (instance === submit) {
 				submit.addEventListener(MouseEvent.CLICK, submitClick, false, 0, true);
 				refreshSubmitButtonEnabled();
 			}
-
 		}
 
 		override protected function partRemoved(partName:String, instance:Object):void {
@@ -51,8 +54,15 @@ package ssen.mvc.samples.basic.view {
 
 			if (instance === textInput) {
 				textInput.removeEventListener(TextOperationEvent.CHANGE, textChange);
+				textInput.removeEventListener(FlexEvent.ENTER, enter);
 			} else if (instance === submit) {
 				submit.removeEventListener(MouseEvent.CLICK, submitClick);
+			}
+		}
+
+		private function enter(event:FlexEvent):void {
+			if (textInput.text !== "") {
+				dispatchEvent(new Event(SUBMIT));
 			}
 		}
 

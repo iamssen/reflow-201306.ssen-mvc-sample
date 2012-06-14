@@ -3,9 +3,12 @@
 			   xmlns:view="ssen.mvc.samples.basic.view.*" xmlns:basic="ssen.mvc.samples.basic.*">
 	<fx:Script>
 		<![CDATA[
+			import ssen.mvc.samples.basic.view.MessageLog;
 			import ssen.mvc.samples.basic.BasicSampleView;
+			
+			private var ssen_mvc_samples_basic_view_MessageLog_obj:ssen.mvc.samples.basic.view.MessageLog;
 		]]>
 	</fx:Script>
-
+	
 	<basic:BasicSampleView width="100%" height="100%"/>
 </s:Application>

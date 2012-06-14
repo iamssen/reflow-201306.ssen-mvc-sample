@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("ssen.mvc.samples.basic.view.MessageLog")]
+	</fx:Metadata>
+
+	<s:DataGroup id="list" width="100%" height="100%"
+				 itemRenderer="ssen.mvc.samples.basic.view.MessageLogItemRenderer">
+		<s:layout>
+			<s:VerticalLayout paddingTop="5" paddingBottom="5" paddingLeft="5" paddingRight="5" gap="10"
+							  horizontalAlign="left" verticalAlign="top"/>
+		</s:layout>
+	</s:DataGroup>
+</s:Skin>

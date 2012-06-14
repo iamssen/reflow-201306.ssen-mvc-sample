@@ -3,13 +3,17 @@ package ssen.mvc.samples.basic {
 	import ssen.mvc.core.IContextView;
 	import ssen.mvc.ondisplay.DisplayContext;
 	import ssen.mvc.samples.basic.controller.AddMessage;
-	import ssen.mvc.samples.basic.events.MessageUIEvent;
+	import ssen.mvc.samples.basic.controller.RemoveMessage;
+	import ssen.mvc.samples.basic.events.MessageEvent;
 	import ssen.mvc.samples.basic.model.MessageModel;
-	import ssen.mvc.samples.basic.model.MessageModelImplLocal;
+	import ssen.mvc.samples.basic.model.LocalMessageModel;
 	import ssen.mvc.samples.basic.view.Dummy;
 	import ssen.mvc.samples.basic.view.DummyMediator;
 	import ssen.mvc.samples.basic.view.MessageInput;
 	import ssen.mvc.samples.basic.view.MessageInputMediator;
+	import ssen.mvc.samples.basic.view.MessageLog;
+	import ssen.mvc.samples.basic.view.MessageLogItemRenderer;
+	import ssen.mvc.samples.basic.view.MessageLogMediator;
 
 	public class BasicSampleContext extends DisplayContext {
 		public function BasicSampleContext(contextView:IContextView, parentContext:IContext=null) {
@@ -19,10 +23,13 @@ package ssen.mvc.samples.basic {
 		override protected function mapDependency():void {
 			viewInjector.mapView(Dummy, DummyMediator);
 			viewInjector.mapView(MessageInput, MessageInputMediator);
+			viewInjector.mapView(MessageLog, MessageLogMediator);
+			viewInjector.mapView(MessageLogItemRenderer);
 
-			injector.mapSingletonOf(MessageModel, MessageModelImplLocal);
+			injector.mapSingletonOf(MessageModel, LocalMessageModel);
 
-			commandMap.mapCommand(MessageUIEvent.ADD_MESSAGE, AddMessage);
+			commandMap.mapCommand(MessageEvent.ADD_MESSAGE, AddMessage);
+			commandMap.mapCommand(MessageEvent.REMOVE_MESSAGE, RemoveMessage);
 		}
 
 		override protected function shutdown():void {

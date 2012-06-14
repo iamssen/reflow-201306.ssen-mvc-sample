@@ -1,14 +1,13 @@
 package ssen.mvc.samples.basic.controller {
 	import flash.events.Event;
-	
+
 	import ssen.mvc.core.ICommand;
 	import ssen.mvc.core.IContextDispatcher;
 	import ssen.mvc.samples.basic.events.MessageErrorEvent;
 	import ssen.mvc.samples.basic.events.MessageEvent;
-	import ssen.mvc.samples.basic.model.Message;
 	import ssen.mvc.samples.basic.model.MessageModel;
 
-	public class AddMessage implements ICommand {
+	public class RemoveMessage implements ICommand {
 
 		[Inject]
 		public var model:MessageModel;
@@ -21,12 +20,13 @@ package ssen.mvc.samples.basic.controller {
 			var outputEvt:MessageEvent;
 			var errorEvt:MessageErrorEvent;
 
-			model.addMessage(inputEvt.text, function(message:Message):void {
-				outputEvt=new MessageEvent(MessageEvent.CREATED_NEW_MESSAGE);
-				outputEvt.messageId=message.id;
+			model.removeMessage(inputEvt.messageId, function(id:int):void {
+				outputEvt=new MessageEvent(MessageEvent.REMOVED_MESSAGE);
+				outputEvt.messageId=id;
 				dispatcher.dispatch(outputEvt);
 			}, function(error:Error):void {
-				errorEvt=new MessageErrorEvent(MessageErrorEvent.ADDED_FAILED, error.message, error.errorID);
+				errorEvt=new MessageErrorEvent(MessageErrorEvent.REMOVED_FAILED, error.message,
+											   error.errorID);
 				dispatcher.dispatch(errorEvt);
 			});
 		}
