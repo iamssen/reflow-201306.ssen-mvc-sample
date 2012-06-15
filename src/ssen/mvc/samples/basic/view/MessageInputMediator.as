@@ -17,14 +17,14 @@ package ssen.mvc.samples.basic.view {
 		}
 
 		public function onRemove():void {
-			dispatcher.removeEventListener(MessageEvent.CREATED_NEW_MESSAGE, createdNewMessage);
+			dispatcher.removeEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage);
 			view.removeEventListener(view.SUBMIT, submitHandler);
 			view.deconstruct();
 			view=null;
 		}
 
 		public function onRegister():void {
-			dispatcher.addEventListener(MessageEvent.CREATED_NEW_MESSAGE, createdNewMessage);
+			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage);
 			dispatcher.addEventListener(MessageErrorEvent.ADDED_FAILED, addMessageFailed);
 			view.addEventListener(view.SUBMIT, submitHandler);
 		}

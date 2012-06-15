@@ -27,7 +27,7 @@ package ssen.mvc.samples.basic.view {
 		}
 
 		public function onRemove():void {
-			dispatcher.removeEventListener(MessageEvent.CREATED_NEW_MESSAGE, createdNewMessage);
+			dispatcher.removeEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage);
 			dispatcher.removeEventListener(MessageEvent.REMOVED_MESSAGE, removedMessage);
 
 			view.deconstruct();
@@ -36,7 +36,7 @@ package ssen.mvc.samples.basic.view {
 		}
 
 		public function onRegister():void {
-			dispatcher.addEventListener(MessageEvent.CREATED_NEW_MESSAGE, createdNewMessage);
+			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage);
 			dispatcher.addEventListener(MessageEvent.REMOVED_MESSAGE, removedMessage);
 		}
 

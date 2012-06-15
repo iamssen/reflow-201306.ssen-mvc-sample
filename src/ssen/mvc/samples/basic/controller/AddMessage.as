@@ -22,7 +22,7 @@ package ssen.mvc.samples.basic.controller {
 			var errorEvt:MessageErrorEvent;
 
 			model.addMessage(inputEvt.text, function(message:Message):void {
-				outputEvt=new MessageEvent(MessageEvent.CREATED_NEW_MESSAGE);
+				outputEvt=new MessageEvent(MessageEvent.ADDED_MESSAGE);
 				outputEvt.messageId=message.id;
 				dispatcher.dispatch(outputEvt);
 			}, function(error:Error):void {

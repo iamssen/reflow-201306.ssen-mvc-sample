@@ -1,6 +1,6 @@
 package ssen.mvc.samples.basic.model {
 	import flash.utils.setTimeout;
-	
+
 	import ssen.mvc.base.Actor;
 
 	public class LocalMessageModel extends Actor implements MessageModel {
@@ -8,6 +8,10 @@ package ssen.mvc.samples.basic.model {
 
 		public function LocalMessageModel() {
 			table=new MessageTable;
+		}
+
+		override protected function deconstruct():void {
+			table=null;
 		}
 
 		public function addMessage(text:String, result:Function=null, fault:Function=null):void {

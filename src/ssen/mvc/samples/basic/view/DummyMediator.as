@@ -20,7 +20,7 @@ package ssen.mvc.samples.basic.view {
 			dispatcher.removeEventListener(MessageEvent.ADD_MESSAGE, viewEvent);
 			dispatcher.removeEventListener(MessageEvent.REMOVE_MESSAGE, viewEvent);
 			dispatcher.removeEventListener(MessageEvent.REMOVED_MESSAGE, viewEvent);
-			dispatcher.removeEventListener(MessageEvent.CREATED_NEW_MESSAGE, viewEvent);
+			dispatcher.removeEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
 			dispatcher.removeEventListener(MessageEvent.TEXT_IS_BLANK, viewEvent);
 			dispatcher.removeEventListener(MessageErrorEvent.ADDED_FAILED, viewEvent);
 			dispatcher.removeEventListener(MessageErrorEvent.REMOVED_FAILED, viewEvent);
@@ -30,7 +30,7 @@ package ssen.mvc.samples.basic.view {
 			dispatcher.addEventListener(MessageEvent.ADD_MESSAGE, viewEvent);
 			dispatcher.addEventListener(MessageEvent.REMOVE_MESSAGE, viewEvent);
 			dispatcher.addEventListener(MessageEvent.REMOVED_MESSAGE, viewEvent);
-			dispatcher.addEventListener(MessageEvent.CREATED_NEW_MESSAGE, viewEvent);
+			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
 			dispatcher.addEventListener(MessageEvent.TEXT_IS_BLANK, viewEvent);
 			dispatcher.addEventListener(MessageErrorEvent.ADDED_FAILED, viewEvent);
 			dispatcher.addEventListener(MessageErrorEvent.REMOVED_FAILED, viewEvent);
