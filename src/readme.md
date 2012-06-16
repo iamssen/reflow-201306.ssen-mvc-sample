@@ -10,14 +10,16 @@ Model 은 **이 프로그램이 어떤 작동을 하는 것인가?** 라는 주�
 
 [ssen.mvc.samples.basic.model.Message](ssen/mvc/samples/basic/model/Message.as)
 
-<pre><code>package ssen.mvc.samples.basic.model {
+```
+package ssen.mvc.samples.basic.model {
 
 	public class Message {
 		public var id:int;
 		public var time:Date;
 		public var text:String;
 	}
-}</code></pre>
+}
+```
 
 우선 `Message` 라는 Value Object 를 만들어 줍니다.
 
@@ -29,7 +31,8 @@ Value Object 는 일종의 그룹화 된 데이터 입니다. `Message` 하나�
 
 [ssen.mvc.samples.basic.model.MessageModel](ssen/mvc/samples/basic/model/MessageModel.as)
 
-<pre><code>package ssen.mvc.samples.basic.model {
+```
+package ssen.mvc.samples.basic.model {
 
 	public interface MessageModel {
 		function addMessage(text:String, result:Function=null, fault:Function=null):void;
@@ -41,17 +44,20 @@ Value Object 는 일종의 그룹화 된 데이터 입니다. `Message` 하나�
 		function removeMessages(ids:Vector.<int>, result:Function=null, fault:Function=null):void;
 		function removeAllMessages(result:Function=null, fault:Function=null):void;
 	}
-}</code></pre>
+}
+```
 
 글을 저장, 갱신, 삭제 할 수 있는 `MessageModel` 이라는 인터페이스를 만들어 줍니다.
 
 result 와 fault 는 서버 데이터는 즉각적으로 데이터가 오지 않기 때문에,
 
-<pre><code>model.addMessage("text", function(message:Message):void {
+```
+model.addMessage("text", function(message:Message):void {
 	trace(message);
 }, function(error:Error):void {
 	trace(error);
-});</code></pre>
+});
+```
 
 위와 같은 형태로, 데이터가 도착했을때 행동할 block code 를 function 형태로 보내주게 됩니다.
 
@@ -59,7 +65,8 @@ result 와 fault 는 서버 데이터는 즉각적으로 데이터가 오지 않
 
 [ssen.mvc.samples.basic.model.LocalMessageModel](ssen/mvc/samples/basic/model/LocalMessageModel.as)
 
-<pre><code>package ssen.mvc.samples.basic.model {
+```
+package ssen.mvc.samples.basic.model {
 	import flash.utils.setTimeout;
 
 	import ssen.mvc.base.Actor;
@@ -85,7 +92,8 @@ result 와 fault 는 서버 데이터는 즉각적으로 데이터가 오지 않
 			}, 100);
 		}
 		
-// 길어서 그러니 파일로 보세요.</code></pre>
+// 길어서 그러니 파일로 보세요.
+```
 
 제 경우에는 `DataTable` 이라는 유틸리티를 사용했지만, 여러분은 단순히 
 
@@ -110,7 +118,8 @@ result 와 fault 는 서버 데이터는 즉각적으로 데이터가 오지 않
 
 [ssen.mvc.samples.basic.events.MessageEvent](ssen/mvc/samples/basic/events/MessageEvent.as)
 
-<pre><code>package ssen.mvc.samples.basic.events {
+```
+package ssen.mvc.samples.basic.events {
 	import flash.events.Event;
 
 	public class MessageEvent extends Event {
@@ -140,7 +149,7 @@ result 와 fault 는 서버 데이터는 즉각적으로 데이터가 오지 않
 		}
 	}
 }
-</code></pre>
+````
 
 명령은 크게
 
@@ -164,7 +173,8 @@ result 와 fault 는 서버 데이터는 즉각적으로 데이터가 오지 않
 
 [ssen.mvc.samples.basic.view.Dummy](ssen/mvc/samples/basic/view/Dummy.as)
 
-<pre><code>package ssen.mvc.samples.basic.view {
+```
+package ssen.mvc.samples.basic.view {
 
 	import spark.components.TextArea;
 	import spark.components.supportClasses.SkinnableComponent;
@@ -180,7 +190,8 @@ result 와 fault 는 서버 데이터는 즉각적으로 데이터가 오지 않
 			}
 		}
 	}
-}</code></pre>
+}
+```
 
 Spark 에서 생긴 `SkinnableComponent` 를 사용하면 좀 더 깔끔한 구성이 가능합니다.
 
@@ -195,7 +206,8 @@ Spark 에서 생긴 `SkinnableComponent` 를 사용하면 좀 더 깔끔한 구�
 
 [ssen.mvc.samples.basic.view.DummyMediator](ssen/mvc/samples/basic/view/DummyMediator.as)
 
-<pre><code>package ssen.mvc.samples.basic.view {
+```
+package ssen.mvc.samples.basic.view {
 	import flash.events.Event;
 	
 	import ssen.mvc.core.IContextDispatcher;
@@ -238,7 +250,8 @@ Spark 에서 생긴 `SkinnableComponent` 를 사용하면 좀 더 깔끔한 구�
 			view.log(event.toString());
 		}
 	}
-}</code></pre>
+}
+```
 
 `Mediator` 는 외부의 로직과 `View` 를 중계해 줍니다.
 
@@ -251,15 +264,18 @@ Spark 에서 생긴 `SkinnableComponent` 를 사용하면 좀 더 깔끔한 구�
 
 [ssen.mvc.samples.basic.view.DummySkin](ssen/mvc/samples/basic/view/DummySkin.mxml)
 
-<pre><code>&lt;?xml version="1.0" encoding="utf-8"?>
-&lt;s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
-	&lt;!-- host component -->
-	&lt;fx:Metadata>
+```
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+	<!-- host component -->
+	<fx:Metadata>
 		[HostComponent("ssen.mvc.samples.basic.view.Dummy")]
-	&lt;/fx:Metadata>
+	</fx:Metadata>
 
-	&lt;s:TextArea id="txt" width="100%" height="100%"/>
-&lt;/s:Skin></code></pre>
+	<s:TextArea id="txt" width="100%" height="100%"/>
+</s:Skin>
+
+```
 
 `Dummy` 의 `Skin` 입니다. `SkinnableComponent` 에 관련된 것은 검색을 통해 알아보시는게 더 좋겠네요.
 
@@ -275,6 +291,276 @@ Spark 에서 생긴 `SkinnableComponent` 를 사용하면 좀 더 깔끔한 구�
 
 `Mediator` 에 의한 분리는 우리가 어떤 Component 를 개발하는데, 전체 프로그램의 흐름은 신경쓰지 않아도 되는 장점을 줍니다. 
 
+단순히 확인만 하는 것은 적절한 테스트가 되지 못할테니, 입력을 담당할 `View` 를 하나 더 만들어 줍니다.
+
+[ssen.mvc.samples.basic.view.MessageInput](ssen/mvc/samples/basic/view/MessageInput.as)
+
+```
+package ssen.mvc.samples.basic.view {
+
+	import flash.events.Event;
+	import flash.events.KeyboardEvent;
+	import flash.events.MouseEvent;
+
+	import mx.events.FlexEvent;
+
+	import spark.components.Button;
+	import spark.components.TextInput;
+	import spark.components.supportClasses.SkinnableComponent;
+	import spark.events.TextOperationEvent;
+
+	[Event(name="submit", type="flash.events.Event")]
+
+	public class MessageInput extends SkinnableComponent {
+
+		public const SUBMIT:String="submit";
+
+		[SkinPart(required="true")]
+		public var textInput:TextInput;
+
+		[SkinPart(required="true")]
+		public var submit:Button;
+
+		public function getText():String {
+			return textInput.text;
+		}
+
+		public function clearText():void {
+			textInput.text="";
+			refreshSubmitButtonEnabled();
+			focusManager.setFocus(textInput);
+		}
+
+		public function deconstruct():void {
+			detachSkin();
+		}
+
+		override protected function partAdded(partName:String, instance:Object):void {
+			super.partAdded(partName, instance);
+
+			if (instance === textInput) {
+				textInput.addEventListener(TextOperationEvent.CHANGE, textChange, false, 0, true);
+				textInput.addEventListener(FlexEvent.ENTER, enter, false, 0, true);
+			} else if (instance === submit) {
+				submit.addEventListener(MouseEvent.CLICK, submitClick, false, 0, true);
+				refreshSubmitButtonEnabled();
+			}
+		}
+
+		override protected function partRemoved(partName:String, instance:Object):void {
+			super.partRemoved(partName, instance);
+
+			if (instance === textInput) {
+				textInput.removeEventListener(TextOperationEvent.CHANGE, textChange);
+				textInput.removeEventListener(FlexEvent.ENTER, enter);
+			} else if (instance === submit) {
+				submit.removeEventListener(MouseEvent.CLICK, submitClick);
+			}
+		}
+
+		private function enter(event:FlexEvent):void {
+			if (textInput.text !== "") {
+				dispatchEvent(new Event(SUBMIT));
+			}
+		}
+
+		private function submitClick(event:MouseEvent):void {
+			dispatchEvent(new Event(SUBMIT));
+		}
+
+		private function textChange(event:TextOperationEvent):void {
+			refreshSubmitButtonEnabled();
+		}
+
+		private function refreshSubmitButtonEnabled():void {
+			submit.enabled=textInput !== null && textInput.text.length > 0;
+		}
+
+	}
+}
+```
+
+`TextInput` 에 글을 쓰고, `Button` 을 누르거나, `enter key` 를 통해서 보내는 간단한 `View` 입니다.
+
+[ssen.mvc.samples.basic.view.MessageInputSkin](ssen/mvc/samples/basic/view/MessageInputSkin.mxml)
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("ssen.mvc.samples.basic.view.MessageInput")]
+	</fx:Metadata>
+
+	<s:layout>
+		<s:HorizontalLayout paddingTop="0" paddingBottom="0" paddingLeft="0" paddingRight="0" gap="5"
+							horizontalAlign="left" verticalAlign="top"/>
+	</s:layout>
+
+	<s:TextInput id="textInput" width="100%" height="100%"/>
+	<s:Button id="submit" label="submit" height="100%" buttonMode="true"/>
+</s:Skin>
+```
+
 
 ## Context
+
+자 이제 **이 프로그램이 어떤 데이터를 가지고 있고, 어떤 작동을 하느냐?** 에 대한 `Model` 도 만들었고, **어떤 행동들을 취할 것이냐, 그 행동들을 어떤 알림에 의해 취할 것이냐** 에 대한 `Controller` 도 만들었고, **프로그램의 작동과 행동들을 사용자와 연결 시켜줄** `View` 도 만들었습니다.
+
+이것들을 연결해줘야겠죠.
+
+[ssen.mvc.samples.basic.BasicSampleContext](ssen/mvc/samples/basic/BasicSampleContext.as)
+
+```
+package ssen.mvc.samples.basic {
+	import ssen.mvc.core.IContext;
+	import ssen.mvc.core.IContextView;
+	import ssen.mvc.ondisplay.DisplayContext;
+	import ssen.mvc.samples.basic.controller.AddMessage;
+	import ssen.mvc.samples.basic.controller.RemoveMessage;
+	import ssen.mvc.samples.basic.events.MessageEvent;
+	import ssen.mvc.samples.basic.model.LocalMessageModel;
+	import ssen.mvc.samples.basic.model.MessageModel;
+	import ssen.mvc.samples.basic.view.Dummy;
+	import ssen.mvc.samples.basic.view.DummyMediator;
+	import ssen.mvc.samples.basic.view.MessageInput;
+	import ssen.mvc.samples.basic.view.MessageInputMediator;
+	import ssen.mvc.samples.basic.view.MessageLog;
+	import ssen.mvc.samples.basic.view.MessageLogListRenderer;
+	import ssen.mvc.samples.basic.view.MessageLogMediator;
+	import ssen.mvc.samples.basic.view.MessageRendererMediator;
+
+	public class BasicSampleContext extends DisplayContext {
+		public function BasicSampleContext(contextView:IContextView, parentContext:IContext=null) {
+			super(contextView, parentContext);
+		}
+
+		override protected function mapDependency():void {
+			viewInjector.mapView(Dummy, DummyMediator);
+			viewInjector.mapView(MessageInput, MessageInputMediator);
+			viewInjector.mapView(MessageLog, MessageLogMediator);
+			viewInjector.mapView(MessageLogListRenderer, MessageRendererMediator);
+
+			injector.mapSingletonOf(MessageModel, LocalMessageModel);
+
+			commandMap.mapCommand(MessageEvent.ADD_MESSAGE, AddMessage);
+			commandMap.mapCommand(MessageEvent.REMOVE_MESSAGE, RemoveMessage);
+		}
+
+		override protected function shutdown():void {
+			// TODO Auto Generated method stub
+			super.shutdown();
+		}
+
+		override protected function startup():void {
+			// TODO Auto Generated method stub
+			super.startup();
+		}
+
+	}
+}
+
+```
+
+- `viewInjector.mapView` 는 만들어 두었던 `View` 와 `Mediator` 를 이어줍니다.
+- `injector.mapSingletonOf` 는 `[Inject]` metadata tag 를 통한 의존성 주입을 위한 선언이 됩니다
+- `commandMap.mapCommand` 는 특정 `Event` 발생시에, 실행될 `Command` 를 지정합니다.
+
+[ssen.mvc.samples.basic.BasicSample](ssen/mvc/samples/basic/BasicSample.mxml)
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:view="ssen.mvc.samples.basic.view.*" preinitialize="initialContext()"
+		 implements="ssen.mvc.core.IContextView">
+	<s:layout>
+		<s:VerticalLayout paddingTop="5" paddingBottom="5" paddingLeft="5" paddingRight="5" gap="10"
+						  horizontalAlign="left" verticalAlign="top"/>
+	</s:layout>
+
+	<fx:Script>
+		<![CDATA[
+			import ssen.mvc.core.IContext;
+
+			private var context:BasicSampleContext;
+
+
+			public function get contextInitialized():Boolean {
+				return context !== null;
+			}
+
+			public function initialContext(parentContext:IContext=null):void {
+				context=new BasicSampleContext(this, parentContext);
+			}
+		]]>
+	</fx:Script>
+
+	<s:Group width="100%" height="100%">
+		<s:layout>
+			<s:VerticalLayout paddingTop="0" paddingBottom="0" paddingLeft="0" paddingRight="0" gap="5"
+							  horizontalAlign="left" verticalAlign="top"/>
+
+		</s:layout>
+		<view:MessageLog width="100%" height="100%" skinClass="ssen.mvc.samples.basic.view.MessageLogSkin"/>
+		<view:MessageInput width="100%" height="25" skinClass="ssen.mvc.samples.basic.view.MessageInputSkin"/>
+	</s:Group>
+
+	<view:Dummy width="100%" height="100" skinClass="ssen.mvc.samples.basic.view.DummySkin"/>
+</s:Group>
+```
+
+자… 이제 만들어진 `Context` 를 적용시켜줄 `ContextView` 를 만듭니다.
+
+`preinitialize` 상황에서 `context` 를 만들어 줍니다.
+
+아래쪽에 보시면 만들어두었던 `View` 들이 포함되어 있습니다.
+
+[Main.mxml](Main.mxml)
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:view="ssen.mvc.samples.basic.view.*" xmlns:basic="ssen.mvc.samples.basic.*">
+	<basic:BasicSample width="100%" height="100%"/>
+</s:Application>
+```
+
+마지막으로 이제 만들어진 `ContextView` 를 화면에 포함시켜주면 동작을 하게 됩니다. `ContextView` 간에는 상호 간섭이 없기 때문에,
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:view="ssen.mvc.samples.basic.view.*" xmlns:basic="ssen.mvc.samples.basic.*">
+	<s:layout>
+		<s:HorizontalLayout paddingTop="5" paddingBottom="5" paddingLeft="5" paddingRight="5" gap="10"
+						  horizontalAlign="left" verticalAlign="top"/>
+	</s:layout>
+	
+	<basic:BasicSample width="100%" height="100%"/>
+	<basic:BasicSample width="100%" height="100%"/>
+</s:Application>
+```
+
+위와 같은 구성을 해줘도 정상적으로 작동되게 됩니다.
+
+<u>뜨문뜨문 설명을 해뒀는데, 다시 한 번, 코드를 살펴보면서 코드를 작성해보세요.</u>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

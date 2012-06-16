@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
-			   xmlns:view="ssen.mvc.samples.basic.view.*" xmlns:basic="ssen.mvc.samples.basic.*">
-	<fx:Script>
-		<![CDATA[
-			import ssen.mvc.samples.basic.view.MessageLog;
-			import ssen.mvc.samples.basic.BasicSampleView;
-			
-			private var ssen_mvc_samples_basic_view_MessageLog_obj:ssen.mvc.samples.basic.view.MessageLog;
-		]]>
-	</fx:Script>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:view="ssen.mvc.samples.basic.view.*"
+			   xmlns:basic="ssen.mvc.samples.basic.*"
+			   viewSourceURL="srcview/index.html">
+	<s:layout>
+		<s:HorizontalLayout paddingTop="5" paddingBottom="5" paddingLeft="5" paddingRight="5" gap="5" 
+							horizontalAlign="left" verticalAlign="top"/>
+		
+	</s:layout>
 	
-	<basic:BasicSampleView width="100%" height="100%"/>
+	<basic:BasicSample width="100%" height="100%"/>
+	<basic:BasicSample width="100%" height="100%"/>
 </s:Application>
