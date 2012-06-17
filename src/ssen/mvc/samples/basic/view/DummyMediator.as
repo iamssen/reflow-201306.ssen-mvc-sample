@@ -22,8 +22,8 @@ package ssen.mvc.samples.basic.view {
 			dispatcher.removeEventListener(MessageEvent.REMOVED_MESSAGE, viewEvent);
 			dispatcher.removeEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
 			dispatcher.removeEventListener(MessageEvent.TEXT_IS_BLANK, viewEvent);
-			dispatcher.removeEventListener(MessageErrorEvent.ADDED_FAILED, viewEvent);
-			dispatcher.removeEventListener(MessageErrorEvent.REMOVED_FAILED, viewEvent);
+			dispatcher.removeEventListener(MessageErrorEvent.ADD_FAILED, viewEvent);
+			dispatcher.removeEventListener(MessageErrorEvent.REMOVE_FAILED, viewEvent);
 		}
 
 		public function onRegister():void {
@@ -32,8 +32,8 @@ package ssen.mvc.samples.basic.view {
 			dispatcher.addEventListener(MessageEvent.REMOVED_MESSAGE, viewEvent);
 			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
 			dispatcher.addEventListener(MessageEvent.TEXT_IS_BLANK, viewEvent);
-			dispatcher.addEventListener(MessageErrorEvent.ADDED_FAILED, viewEvent);
-			dispatcher.addEventListener(MessageErrorEvent.REMOVED_FAILED, viewEvent);
+			dispatcher.addEventListener(MessageErrorEvent.ADD_FAILED, viewEvent);
+			dispatcher.addEventListener(MessageErrorEvent.REMOVE_FAILED, viewEvent);
 		}
 
 		private function viewEvent(event:Event):void {

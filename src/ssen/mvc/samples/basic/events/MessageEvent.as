@@ -7,6 +7,8 @@ package ssen.mvc.samples.basic.events {
 		public static const REMOVE_MESSAGE:String="removeMessage";
 		public static const REMOVED_MESSAGE:String="removedMessage";
 		public static const TEXT_IS_BLANK:String="textIsBlank";
+		public static const UPDATE_MESSAGE:String="updateMessage";
+		public static const UPDATED_MESSAGE:String="updatedMessage";
 
 		public var text:String;
 		public var messageId:int;

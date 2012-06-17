@@ -26,7 +26,7 @@ package ssen.mvc.samples.basic.controller {
 				outputEvt.messageId=message.id;
 				dispatcher.dispatch(outputEvt);
 			}, function(error:Error):void {
-				errorEvt=new MessageErrorEvent(MessageErrorEvent.ADDED_FAILED, error.message, error.errorID);
+				errorEvt=new MessageErrorEvent(MessageErrorEvent.ADD_FAILED, error.message, error.errorID);
 				dispatcher.dispatch(errorEvt);
 			});
 		}

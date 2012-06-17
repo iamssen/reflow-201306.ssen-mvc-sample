@@ -25,7 +25,7 @@ package ssen.mvc.samples.basic.view {
 
 		public function onRegister():void {
 			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage);
-			dispatcher.addEventListener(MessageErrorEvent.ADDED_FAILED, addMessageFailed);
+			dispatcher.addEventListener(MessageErrorEvent.ADD_FAILED, addMessageFailed);
 			view.addEventListener(view.SUBMIT, submitHandler);
 		}
 
