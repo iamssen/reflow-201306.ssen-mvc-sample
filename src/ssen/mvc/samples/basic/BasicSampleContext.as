@@ -21,26 +21,49 @@ package ssen.mvc.samples.basic {
 			super(contextView, parentContext);
 		}
 
+		//=========================================================
+		// 의존성을 선언하는 시점
+		//=========================================================
 		override protected function mapDependency():void {
+			
+			//---------------------------------------
+			// View 와 Mediator 의 연계를 선언해줍니다
+			//
+			// Mediator 를 선언해주면
+			// View 가 addChild 되는 시점에 Mediator 를 자동으로 생성, 실행 시켜줍니다
+			//---------------------------------------
 			viewInjector.mapView(Dummy, DummyMediator);
 			viewInjector.mapView(MessageInput, MessageInputMediator);
 			viewInjector.mapView(MessageLog, MessageLogMediator);
 			viewInjector.mapView(MessageLogListRenderer, MessageRendererMediator);
 
+			//---------------------------------------
+			// Model 과 같이 사용할 의존성을 선언해줍니다
+			//---------------------------------------
 			injector.mapSingletonOf(MessageModel, LocalMessageModel);
 
+			//---------------------------------------
+			// Command 를 선언해줍니다
+			//
+			// 선언해주면 Event 가 dispatch 되는 순간
+			// Command 를 자동으로 생성, 실행 시켜줍니다
+			//---------------------------------------
 			commandMap.mapCommand(MessageEvent.ADD_MESSAGE, AddMessage);
 			commandMap.mapCommand(MessageEvent.REMOVE_MESSAGE, RemoveMessage);
 		}
 
-		override protected function shutdown():void {
-			// TODO Auto Generated method stub
-			super.shutdown();
-		}
-
+		//=========================================================
+		// context view 가 실행, 종료되는 시점 (기본적으로 addedToStage, removedFromStage)
+		// 에 실행되는 기능들
+		//=========================================================		
 		override protected function startup():void {
 			// TODO Auto Generated method stub
 			super.startup();
+		}
+		
+		override protected function shutdown():void {
+			// TODO Auto Generated method stub
+			super.shutdown();
 		}
 
 	}
