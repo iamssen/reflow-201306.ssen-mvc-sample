@@ -4,6 +4,8 @@ package ssen.mvc.samples.basic {
 	import ssen.mvc.ondisplay.DisplayContext;
 	import ssen.mvc.samples.basic.controller.AddMessage;
 	import ssen.mvc.samples.basic.controller.RemoveMessage;
+	import ssen.mvc.samples.basic.controller.StartUpdateMessage;
+	import ssen.mvc.samples.basic.controller.UpdateMessage;
 	import ssen.mvc.samples.basic.events.MessageEvent;
 	import ssen.mvc.samples.basic.model.LocalMessageModel;
 	import ssen.mvc.samples.basic.model.MessageModel;
@@ -15,6 +17,8 @@ package ssen.mvc.samples.basic {
 	import ssen.mvc.samples.basic.view.MessageLogListRenderer;
 	import ssen.mvc.samples.basic.view.MessageLogMediator;
 	import ssen.mvc.samples.basic.view.MessageRendererMediator;
+	import ssen.mvc.samples.basic.view.MessageUpdate;
+	import ssen.mvc.samples.basic.view.MessageUpdateMediator;
 
 	public class BasicSampleContext extends DisplayContext {
 		public function BasicSampleContext(contextView:IContextView, parentContext:IContext=null) {
@@ -25,7 +29,7 @@ package ssen.mvc.samples.basic {
 		// 의존성을 선언하는 시점
 		//=========================================================
 		override protected function mapDependency():void {
-			
+
 			//---------------------------------------
 			// View 와 Mediator 의 연계를 선언해줍니다
 			//
@@ -34,6 +38,7 @@ package ssen.mvc.samples.basic {
 			//---------------------------------------
 			viewInjector.mapView(Dummy, DummyMediator);
 			viewInjector.mapView(MessageInput, MessageInputMediator);
+			viewInjector.mapView(MessageUpdate, MessageUpdateMediator);
 			viewInjector.mapView(MessageLog, MessageLogMediator);
 			viewInjector.mapView(MessageLogListRenderer, MessageRendererMediator);
 
@@ -50,6 +55,8 @@ package ssen.mvc.samples.basic {
 			//---------------------------------------
 			commandMap.mapCommand(MessageEvent.ADD_MESSAGE, AddMessage);
 			commandMap.mapCommand(MessageEvent.REMOVE_MESSAGE, RemoveMessage);
+			commandMap.mapCommand(MessageEvent.START_UPDATE, StartUpdateMessage);
+			commandMap.mapCommand(MessageEvent.UPDATE_MESSAGE, UpdateMessage);
 		}
 
 		//=========================================================
@@ -60,7 +67,7 @@ package ssen.mvc.samples.basic {
 			// TODO Auto Generated method stub
 			super.startup();
 		}
-		
+
 		override protected function shutdown():void {
 			// TODO Auto Generated method stub
 			super.shutdown();

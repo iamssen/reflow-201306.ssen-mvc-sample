@@ -37,7 +37,7 @@ package ssen.mvc.samples.basic.controller {
 
 				function(message:Message):void {
 					outputEvt=new MessageEvent(MessageEvent.UPDATED_MESSAGE);
-					outputEvt.messageId=message.id;
+					outputEvt.message=message;
 					dispatcher.dispatch(outputEvt);
 				},
 

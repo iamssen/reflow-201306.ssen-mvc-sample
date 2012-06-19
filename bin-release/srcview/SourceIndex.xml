@@ -12,6 +12,7 @@
 			<node icon="packageIcon" label="ssen.mvc.samples.basic.controller" expanded="true">
 				<node icon="actionScriptIcon" label="AddMessage.as" url="source/ssen/mvc/samples/basic/controller/AddMessage.as.html"/>
 				<node icon="actionScriptIcon" label="RemoveMessage.as" url="source/ssen/mvc/samples/basic/controller/RemoveMessage.as.html"/>
+				<node icon="actionScriptIcon" label="StartUpdateMessage.as" url="source/ssen/mvc/samples/basic/controller/StartUpdateMessage.as.html"/>
 				<node icon="actionScriptIcon" label="UpdateMessage.as" url="source/ssen/mvc/samples/basic/controller/UpdateMessage.as.html"/>
 			</node>
 			<node icon="packageIcon" label="ssen.mvc.samples.basic.events" expanded="true">
@@ -36,11 +37,14 @@
 				<node icon="mxmlIcon" label="MessageLogSkin.mxml" url="source/ssen/mvc/samples/basic/view/MessageLogSkin.mxml.html"/>
 				<node icon="actionScriptIcon" label="MessageRenderer.as" url="source/ssen/mvc/samples/basic/view/MessageRenderer.as.html"/>
 				<node icon="actionScriptIcon" label="MessageRendererMediator.as" url="source/ssen/mvc/samples/basic/view/MessageRendererMediator.as.html"/>
+				<node icon="actionScriptIcon" label="MessageUpdate.as" url="source/ssen/mvc/samples/basic/view/MessageUpdate.as.html"/>
+				<node icon="actionScriptIcon" label="MessageUpdateMediator.as" url="source/ssen/mvc/samples/basic/view/MessageUpdateMediator.as.html"/>
+				<node icon="mxmlIcon" label="MessageUpdateSkin.mxml" url="source/ssen/mvc/samples/basic/view/MessageUpdateSkin.mxml.html"/>
 			</node>
 			<node icon="mxmlAppIcon" selected="true" label="Main.mxml" url="source/Main.mxml.html"/>
 		</node>
 	</nodes>
-	<zipfile label="Download source (ZIP, 21K)" url="SSenMvcFramework.Basic.zip">
+	<zipfile label="Download source (ZIP, 24K)" url="SSenMvcFramework.Basic.zip">
 	</zipfile>
 	<sdklink label="Download Flex SDK" url="http://www.adobe.com/go/flex451_sdk_download">
 	</sdklink>

@@ -1,6 +1,8 @@
 package ssen.mvc.samples.basic.events {
 	import flash.events.Event;
 
+	import ssen.mvc.samples.basic.model.Message;
+
 	public class MessageEvent extends Event {
 		//=========================================================
 		// event types
@@ -20,6 +22,8 @@ package ssen.mvc.samples.basic.events {
 		/** 메세지가 수정 되었음을 알림 */
 		public static const UPDATED_MESSAGE:String="updatedMessage";
 
+		public static const START_UPDATE:String="startUpdate";
+
 		//=========================================================
 		// parameters
 		//=========================================================
@@ -28,6 +32,9 @@ package ssen.mvc.samples.basic.events {
 
 		/** 입력된 model 측 message primary id */
 		public var messageId:int;
+
+		/** 작업된 서버측에서 생성된 message */
+		public var message:Message;
 
 		//=========================================================
 		// 
@@ -40,12 +47,13 @@ package ssen.mvc.samples.basic.events {
 			var clone:MessageEvent=new MessageEvent(type);
 			clone.messageId=messageId;
 			clone.text=text;
+			clone.message=message;
 
 			return clone;
 		}
 
 		override public function toString():String {
-			return formatToString("MessageEvent", "type", "text", "messageId");
+			return formatToString("MessageEvent", "type", "text", "messageId", "message");
 		}
 
 

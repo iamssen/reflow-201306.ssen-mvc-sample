@@ -10,6 +10,8 @@
 <body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">ssen</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">mvc</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">samples</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">basic</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">events</span> <span class="ActionScriptBracket/Brace">{</span>
     <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">flash</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">events</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">Event</span>;
 
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">ssen</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">mvc</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">samples</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">basic</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">model</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">Message</span>;
+
     <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">MessageEvent</span> <span class="ActionScriptReserved">extends</span> <span class="ActionScriptDefault_Text">Event</span> <span class="ActionScriptBracket/Brace">{</span>
         <span class="ActionScriptComment">//=========================================================
 </span>        <span class="ActionScriptComment">// event types
@@ -29,6 +31,8 @@
         <span class="ActionScriptASDoc">/** 메세지가 수정 되었음을 알림 */</span>
         <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">UPDATED_MESSAGE</span>:<span class="ActionScriptDefault_Text">String</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">"updatedMessage"</span>;
 
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">START_UPDATE</span>:<span class="ActionScriptDefault_Text">String</span><span class="ActionScriptOperator">=</span><span class="ActionScriptString">"startUpdate"</span>;
+
         <span class="ActionScriptComment">//=========================================================
 </span>        <span class="ActionScriptComment">// parameters
 </span>        <span class="ActionScriptComment">//=========================================================
@@ -37,6 +41,9 @@
 
         <span class="ActionScriptASDoc">/** 입력된 model 측 message primary id */</span>
         <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">messageId</span>:<span class="ActionScriptDefault_Text">int</span>;
+
+        <span class="ActionScriptASDoc">/** 작업된 서버측에서 생성된 message */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">message</span>:<span class="ActionScriptDefault_Text">Message</span>;
 
         <span class="ActionScriptComment">//=========================================================
 </span>        <span class="ActionScriptComment">// 
@@ -49,12 +56,13 @@
             <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">clone</span>:<span class="ActionScriptDefault_Text">MessageEvent</span><span class="ActionScriptOperator">=</span><span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">MessageEvent</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">type</span><span class="ActionScriptBracket/Brace">)</span>;
             <span class="ActionScriptDefault_Text">clone</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">messageId</span><span class="ActionScriptOperator">=</span><span class="ActionScriptDefault_Text">messageId</span>;
             <span class="ActionScriptDefault_Text">clone</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">text</span><span class="ActionScriptOperator">=</span><span class="ActionScriptDefault_Text">text</span>;
+            <span class="ActionScriptDefault_Text">clone</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">message</span><span class="ActionScriptOperator">=</span><span class="ActionScriptDefault_Text">message</span>;
 
             <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">clone</span>;
         <span class="ActionScriptBracket/Brace">}</span>
 
         <span class="ActionScriptReserved">override</span> <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">toString</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptBracket/Brace">)</span>:<span class="ActionScriptDefault_Text">String</span> <span class="ActionScriptBracket/Brace">{</span>
-            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">formatToString</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">"MessageEvent"</span><span class="ActionScriptOperator">,</span> <span class="ActionScriptString">"type"</span><span class="ActionScriptOperator">,</span> <span class="ActionScriptString">"text"</span><span class="ActionScriptOperator">,</span> <span class="ActionScriptString">"messageId"</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">formatToString</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptString">"MessageEvent"</span><span class="ActionScriptOperator">,</span> <span class="ActionScriptString">"type"</span><span class="ActionScriptOperator">,</span> <span class="ActionScriptString">"text"</span><span class="ActionScriptOperator">,</span> <span class="ActionScriptString">"messageId"</span><span class="ActionScriptOperator">,</span> <span class="ActionScriptString">"message"</span><span class="ActionScriptBracket/Brace">)</span>;
         <span class="ActionScriptBracket/Brace">}</span>
 
 

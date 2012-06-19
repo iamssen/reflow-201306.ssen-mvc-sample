@@ -41,7 +41,7 @@ package ssen.mvc.samples.basic.controller {
 				// result callback
 				function(message:Message):void {
 					outputEvt=new MessageEvent(MessageEvent.ADDED_MESSAGE);
-					outputEvt.messageId=message.id;
+					outputEvt.message=message;
 					dispatcher.dispatch(outputEvt);
 				},
 

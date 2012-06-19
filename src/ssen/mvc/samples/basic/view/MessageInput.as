@@ -2,9 +2,9 @@ package ssen.mvc.samples.basic.view {
 
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	
+
 	import mx.events.FlexEvent;
-	
+
 	import spark.components.Button;
 	import spark.components.TextInput;
 	import spark.components.supportClasses.SkinnableComponent;
@@ -112,8 +112,11 @@ package ssen.mvc.samples.basic.view {
 			refreshSubmitButtonEnabled();
 		}
 
-		private function refreshSubmitButtonEnabled():void {
-			submit.enabled=textInput !== null && textInput.text.length > 0;
+		final protected function refreshSubmitButtonEnabled():void {
+			if (submit) {
+				var enabled:Boolean=textInput !== null && textInput.text.length > 0;
+				submit.enabled=enabled;
+			}
 		}
 
 	}

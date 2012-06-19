@@ -18,9 +18,13 @@ package ssen.mvc.samples.basic.view {
 
 		public function onRemove():void {
 			dispatcher.removeEventListener(MessageEvent.ADD_MESSAGE, viewEvent);
+			dispatcher.removeEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
 			dispatcher.removeEventListener(MessageEvent.REMOVE_MESSAGE, viewEvent);
 			dispatcher.removeEventListener(MessageEvent.REMOVED_MESSAGE, viewEvent);
-			dispatcher.removeEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
+			dispatcher.removeEventListener(MessageEvent.UPDATE_MESSAGE, viewEvent);
+			dispatcher.removeEventListener(MessageEvent.UPDATED_MESSAGE, viewEvent);
+			dispatcher.removeEventListener(MessageEvent.START_UPDATE, viewEvent);
+			
 			dispatcher.removeEventListener(MessageErrorEvent.TEXT_IS_BLANK, viewEvent);
 			dispatcher.removeEventListener(MessageErrorEvent.ADD_FAILED, viewEvent);
 			dispatcher.removeEventListener(MessageErrorEvent.REMOVE_FAILED, viewEvent);
@@ -28,9 +32,13 @@ package ssen.mvc.samples.basic.view {
 
 		public function onRegister():void {
 			dispatcher.addEventListener(MessageEvent.ADD_MESSAGE, viewEvent);
+			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
 			dispatcher.addEventListener(MessageEvent.REMOVE_MESSAGE, viewEvent);
 			dispatcher.addEventListener(MessageEvent.REMOVED_MESSAGE, viewEvent);
-			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
+			dispatcher.addEventListener(MessageEvent.UPDATE_MESSAGE, viewEvent);
+			dispatcher.addEventListener(MessageEvent.UPDATED_MESSAGE, viewEvent);
+			dispatcher.addEventListener(MessageEvent.START_UPDATE, viewEvent);
+
 			dispatcher.addEventListener(MessageErrorEvent.TEXT_IS_BLANK, viewEvent);
 			dispatcher.addEventListener(MessageErrorEvent.ADD_FAILED, viewEvent);
 			dispatcher.addEventListener(MessageErrorEvent.REMOVE_FAILED, viewEvent);

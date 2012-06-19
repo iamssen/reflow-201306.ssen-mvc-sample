@@ -1,6 +1,6 @@
 package ssen.mvc.samples.basic.view {
 	import flash.events.Event;
-	
+
 	import ssen.mvc.core.IContextDispatcher;
 	import ssen.mvc.core.IMediator;
 	import ssen.mvc.samples.basic.events.MessageEvent;
@@ -27,7 +27,7 @@ package ssen.mvc.samples.basic.view {
 		}
 
 		private function updateHandler(event:Event):void {
-			var evt:MessageEvent=new MessageEvent(MessageEvent.REMOVE_MESSAGE);
+			var evt:MessageEvent=new MessageEvent(MessageEvent.START_UPDATE);
 			evt.messageId=view.getId();
 
 			dispatcher.dispatch(evt);

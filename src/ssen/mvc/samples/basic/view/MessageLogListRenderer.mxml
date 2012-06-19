@@ -9,6 +9,7 @@
 	</view:layout>
 
 	<s:Label text="[{data.id}] {data.text} : {data.time}" width="100%" height="100%" verticalAlign="middle"/>
+	<s:Button label="update" height="100%" click="dispatchUpdate()"/>
 	<s:Button label="delete" height="100%" click="dispatchRemove()"/>
 
 </view:MessageRenderer>

@@ -1,7 +1,7 @@
 package ssen.mvc.samples.basic.view {
 	import mx.collections.ArrayList;
 	import mx.collections.IList;
-
+	
 	import ssen.mvc.core.IContextDispatcher;
 	import ssen.mvc.core.IMediator;
 	import ssen.mvc.samples.basic.events.MessageErrorEvent;
@@ -27,7 +27,8 @@ package ssen.mvc.samples.basic.view {
 		}
 
 		public function onRemove():void {
-			dispatcher.removeEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage);
+			dispatcher.removeEventListener(MessageEvent.ADDED_MESSAGE, addedMessage);
+			dispatcher.removeEventListener(MessageEvent.UPDATED_MESSAGE, updatedMessage);
 			dispatcher.removeEventListener(MessageEvent.REMOVED_MESSAGE, removedMessage);
 
 			view.deconstruct();
@@ -36,8 +37,26 @@ package ssen.mvc.samples.basic.view {
 		}
 
 		public function onRegister():void {
-			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage);
+			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, addedMessage);
+			dispatcher.addEventListener(MessageEvent.UPDATED_MESSAGE, updatedMessage);
 			dispatcher.addEventListener(MessageEvent.REMOVED_MESSAGE, removedMessage);
+		}
+
+		private function updatedMessage(event:MessageEvent):void {
+			var f:int=-1;
+			var fmax:int=list.length;
+			var message:Message;
+
+			while (++f < fmax) {
+				message=list.getItemAt(f) as Message;
+				
+				if (message.id === event.message.id) {
+					list.setItemAt(event.message, f);
+//					list.itemUpdated(
+					
+					return;
+				}
+			}
 		}
 
 		private function removedMessage(event:MessageEvent):void {
@@ -75,15 +94,16 @@ package ssen.mvc.samples.basic.view {
 			}
 		}
 
-		private function createdNewMessage(event:MessageEvent):void {
-			model.getMessage(event.messageId, function(message:Message):void {
-				list.addItem(message);
-			}, function(error:Error):void {
-				var evt:MessageErrorEvent=new MessageErrorEvent(MessageErrorEvent.UNDEFINED_MESSAGE,
-																error.message);
-				evt.messageId=event.messageId;
-				dispatcher.dispatch(evt);
-			});
+		private function addedMessage(event:MessageEvent):void {
+			list.addItem(event.message);
+			//			model.getMessage(event.messageId, function(message:Message):void {
+			//				list.addItem(message);
+			//			}, function(error:Error):void {
+			//				var evt:MessageErrorEvent=new MessageErrorEvent(MessageErrorEvent.UNDEFINED_MESSAGE,
+			//																error.message);
+			//				evt.messageId=event.messageId;
+			//				dispatcher.dispatch(evt);
+			//			});
 		}
 	}
 }
