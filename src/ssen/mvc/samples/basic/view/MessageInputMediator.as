@@ -1,7 +1,7 @@
 package ssen.mvc.samples.basic.view {
 	import flash.events.Event;
 
-	import ssen.mvc.core.IContextDispatcher;
+	import ssen.mvc.core.IEventBus;
 	import ssen.mvc.core.IMediator;
 	import ssen.mvc.samples.basic.events.MessageErrorEvent;
 	import ssen.mvc.samples.basic.events.MessageEvent;
@@ -12,7 +12,7 @@ package ssen.mvc.samples.basic.view {
 		// 의존성 주입 요청
 		//=========================================================
 		[Inject]
-		public var dispatcher:IContextDispatcher;
+		public var eventBus:IEventBus;
 
 		//=========================================================
 		// Framework 에 의해 자동으로 주입받는 view
@@ -29,16 +29,16 @@ package ssen.mvc.samples.basic.view {
 		//=========================================================
 		public function onRegister():void {
 			// 입력의 성공 혹은 실패 시에 취할 작동을 위해 listen
-			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage);
-			dispatcher.addEventListener(MessageErrorEvent.ADD_FAILED, addMessageFailed);
+			eventBus.addEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage);
+			eventBus.addEventListener(MessageErrorEvent.ADD_FAILED, addMessageFailed);
 
 			// user 에 의해 text 입력 요청이 오는 시점을 listen
 			view.addEventListener(view.SUBMIT, submitHandler);
 		}
 
 		public function onRemove():void {
-			dispatcher.removeEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage);
-			dispatcher.removeEventListener(MessageErrorEvent.ADD_FAILED, addMessageFailed);
+			eventBus.removeEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage);
+			eventBus.removeEventListener(MessageErrorEvent.ADD_FAILED, addMessageFailed);
 
 			view.removeEventListener(view.SUBMIT, submitHandler);
 			view.deconstruct();
@@ -64,7 +64,7 @@ package ssen.mvc.samples.basic.view {
 
 			// 텍스트가 공백이면 입력할 필요가 없기 때문에 error event 를 내보내주고 종료
 			if (str === "") {
-				dispatcher.dispatch(new MessageErrorEvent(MessageErrorEvent.TEXT_IS_BLANK));
+				eventBus.dispatchEvent(new MessageErrorEvent(MessageErrorEvent.TEXT_IS_BLANK));
 				return;
 			}
 
@@ -74,7 +74,7 @@ package ssen.mvc.samples.basic.view {
 			var evt:MessageEvent=new MessageEvent(MessageEvent.ADD_MESSAGE);
 			evt.text=str;
 
-			dispatcher.dispatch(evt);
+			eventBus.dispatchEvent(evt);
 		}
 	}
 }

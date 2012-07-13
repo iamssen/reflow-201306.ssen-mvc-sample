@@ -2,7 +2,7 @@ package ssen.mvc.samples.basic.controller {
 	import flash.events.Event;
 
 	import ssen.mvc.core.ICommand;
-	import ssen.mvc.core.IContextDispatcher;
+	import ssen.mvc.core.IEventBus;
 	import ssen.mvc.samples.basic.events.MessageErrorEvent;
 	import ssen.mvc.samples.basic.events.MessageEvent;
 	import ssen.mvc.samples.basic.model.Message;
@@ -17,7 +17,7 @@ package ssen.mvc.samples.basic.controller {
 		public var model:MessageModel;
 
 		[Inject]
-		public var dispatcher:IContextDispatcher;
+		public var eventBus:IEventBus;
 
 		//=========================================================
 		// 실행
@@ -38,13 +38,13 @@ package ssen.mvc.samples.basic.controller {
 				function(message:Message):void {
 					outputEvt=new MessageEvent(MessageEvent.UPDATED_MESSAGE);
 					outputEvt.message=message;
-					dispatcher.dispatch(outputEvt);
+					eventBus.dispatchEvent(outputEvt);
 				},
 
 				function(error:Error):void {
 					errorEvt=new MessageErrorEvent(MessageErrorEvent.UPDATE_FAILED, error.message,
 												   error.errorID);
-					dispatcher.dispatch(errorEvt);
+					eventBus.dispatchEvent(errorEvt);
 				});
 		}
 	}

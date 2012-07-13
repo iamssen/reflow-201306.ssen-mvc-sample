@@ -1,14 +1,14 @@
 package ssen.mvc.samples.basic.view {
 	import flash.events.Event;
 	
-	import ssen.mvc.core.IContextDispatcher;
+	import ssen.mvc.core.IEventBus;
 	import ssen.mvc.core.IMediator;
 	import ssen.mvc.samples.basic.events.MessageErrorEvent;
 	import ssen.mvc.samples.basic.events.MessageEvent;
 
 	public class DummyMediator implements IMediator {
 		[Inject]
-		public var dispatcher:IContextDispatcher;
+		public var eventBus:IEventBus;
 
 		private var view:Dummy;
 
@@ -17,31 +17,31 @@ package ssen.mvc.samples.basic.view {
 		}
 
 		public function onRemove():void {
-			dispatcher.removeEventListener(MessageEvent.ADD_MESSAGE, viewEvent);
-			dispatcher.removeEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
-			dispatcher.removeEventListener(MessageEvent.REMOVE_MESSAGE, viewEvent);
-			dispatcher.removeEventListener(MessageEvent.REMOVED_MESSAGE, viewEvent);
-			dispatcher.removeEventListener(MessageEvent.UPDATE_MESSAGE, viewEvent);
-			dispatcher.removeEventListener(MessageEvent.UPDATED_MESSAGE, viewEvent);
-			dispatcher.removeEventListener(MessageEvent.START_UPDATE, viewEvent);
+			eventBus.removeEventListener(MessageEvent.ADD_MESSAGE, viewEvent);
+			eventBus.removeEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
+			eventBus.removeEventListener(MessageEvent.REMOVE_MESSAGE, viewEvent);
+			eventBus.removeEventListener(MessageEvent.REMOVED_MESSAGE, viewEvent);
+			eventBus.removeEventListener(MessageEvent.UPDATE_MESSAGE, viewEvent);
+			eventBus.removeEventListener(MessageEvent.UPDATED_MESSAGE, viewEvent);
+			eventBus.removeEventListener(MessageEvent.START_UPDATE, viewEvent);
 			
-			dispatcher.removeEventListener(MessageErrorEvent.TEXT_IS_BLANK, viewEvent);
-			dispatcher.removeEventListener(MessageErrorEvent.ADD_FAILED, viewEvent);
-			dispatcher.removeEventListener(MessageErrorEvent.REMOVE_FAILED, viewEvent);
+			eventBus.removeEventListener(MessageErrorEvent.TEXT_IS_BLANK, viewEvent);
+			eventBus.removeEventListener(MessageErrorEvent.ADD_FAILED, viewEvent);
+			eventBus.removeEventListener(MessageErrorEvent.REMOVE_FAILED, viewEvent);
 		}
 
 		public function onRegister():void {
-			dispatcher.addEventListener(MessageEvent.ADD_MESSAGE, viewEvent);
-			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
-			dispatcher.addEventListener(MessageEvent.REMOVE_MESSAGE, viewEvent);
-			dispatcher.addEventListener(MessageEvent.REMOVED_MESSAGE, viewEvent);
-			dispatcher.addEventListener(MessageEvent.UPDATE_MESSAGE, viewEvent);
-			dispatcher.addEventListener(MessageEvent.UPDATED_MESSAGE, viewEvent);
-			dispatcher.addEventListener(MessageEvent.START_UPDATE, viewEvent);
+			eventBus.addEventListener(MessageEvent.ADD_MESSAGE, viewEvent);
+			eventBus.addEventListener(MessageEvent.ADDED_MESSAGE, viewEvent);
+			eventBus.addEventListener(MessageEvent.REMOVE_MESSAGE, viewEvent);
+			eventBus.addEventListener(MessageEvent.REMOVED_MESSAGE, viewEvent);
+			eventBus.addEventListener(MessageEvent.UPDATE_MESSAGE, viewEvent);
+			eventBus.addEventListener(MessageEvent.UPDATED_MESSAGE, viewEvent);
+			eventBus.addEventListener(MessageEvent.START_UPDATE, viewEvent);
 
-			dispatcher.addEventListener(MessageErrorEvent.TEXT_IS_BLANK, viewEvent);
-			dispatcher.addEventListener(MessageErrorEvent.ADD_FAILED, viewEvent);
-			dispatcher.addEventListener(MessageErrorEvent.REMOVE_FAILED, viewEvent);
+			eventBus.addEventListener(MessageErrorEvent.TEXT_IS_BLANK, viewEvent);
+			eventBus.addEventListener(MessageErrorEvent.ADD_FAILED, viewEvent);
+			eventBus.addEventListener(MessageErrorEvent.REMOVE_FAILED, viewEvent);
 		}
 
 		private function viewEvent(event:Event):void {

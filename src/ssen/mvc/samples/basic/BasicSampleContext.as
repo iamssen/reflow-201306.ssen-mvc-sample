@@ -1,7 +1,7 @@
 package ssen.mvc.samples.basic {
 	import ssen.mvc.core.IContext;
 	import ssen.mvc.core.IContextView;
-	import ssen.mvc.ondisplay.DisplayContext;
+	import ssen.mvc.ondisplay.Context;
 	import ssen.mvc.samples.basic.controller.AddMessage;
 	import ssen.mvc.samples.basic.controller.RemoveMessage;
 	import ssen.mvc.samples.basic.controller.StartUpdateMessage;
@@ -20,7 +20,7 @@ package ssen.mvc.samples.basic {
 	import ssen.mvc.samples.basic.view.MessageUpdate;
 	import ssen.mvc.samples.basic.view.MessageUpdateMediator;
 
-	public class BasicSampleContext extends DisplayContext {
+	public class BasicSampleContext extends Context {
 		public function BasicSampleContext(contextView:IContextView, parentContext:IContext=null) {
 			super(contextView, parentContext);
 		}

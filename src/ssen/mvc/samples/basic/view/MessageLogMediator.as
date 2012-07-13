@@ -2,7 +2,7 @@ package ssen.mvc.samples.basic.view {
 	import mx.collections.ArrayList;
 	import mx.collections.IList;
 	
-	import ssen.mvc.core.IContextDispatcher;
+	import ssen.mvc.core.IEventBus;
 	import ssen.mvc.core.IMediator;
 	import ssen.mvc.samples.basic.events.MessageErrorEvent;
 	import ssen.mvc.samples.basic.events.MessageEvent;
@@ -11,7 +11,7 @@ package ssen.mvc.samples.basic.view {
 
 	public class MessageLogMediator implements IMediator {
 		[Inject]
-		public var dispatcher:IContextDispatcher;
+		public var eventBus:IEventBus;
 
 		[Inject]
 		public var model:MessageModel;
@@ -27,9 +27,9 @@ package ssen.mvc.samples.basic.view {
 		}
 
 		public function onRemove():void {
-			dispatcher.removeEventListener(MessageEvent.ADDED_MESSAGE, addedMessage);
-			dispatcher.removeEventListener(MessageEvent.UPDATED_MESSAGE, updatedMessage);
-			dispatcher.removeEventListener(MessageEvent.REMOVED_MESSAGE, removedMessage);
+			eventBus.removeEventListener(MessageEvent.ADDED_MESSAGE, addedMessage);
+			eventBus.removeEventListener(MessageEvent.UPDATED_MESSAGE, updatedMessage);
+			eventBus.removeEventListener(MessageEvent.REMOVED_MESSAGE, removedMessage);
 
 			view.deconstruct();
 			view=null;
@@ -37,9 +37,9 @@ package ssen.mvc.samples.basic.view {
 		}
 
 		public function onRegister():void {
-			dispatcher.addEventListener(MessageEvent.ADDED_MESSAGE, addedMessage);
-			dispatcher.addEventListener(MessageEvent.UPDATED_MESSAGE, updatedMessage);
-			dispatcher.addEventListener(MessageEvent.REMOVED_MESSAGE, removedMessage);
+			eventBus.addEventListener(MessageEvent.ADDED_MESSAGE, addedMessage);
+			eventBus.addEventListener(MessageEvent.UPDATED_MESSAGE, updatedMessage);
+			eventBus.addEventListener(MessageEvent.REMOVED_MESSAGE, removedMessage);
 		}
 
 		private function updatedMessage(event:MessageEvent):void {

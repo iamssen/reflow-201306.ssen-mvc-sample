@@ -1,7 +1,7 @@
 package ssen.mvc.samples.basic.view {
 	import flash.events.Event;
 
-	import ssen.mvc.core.IContextDispatcher;
+	import ssen.mvc.core.IEventBus;
 	import ssen.mvc.core.IMediator;
 	import ssen.mvc.samples.basic.events.MessageErrorEvent;
 	import ssen.mvc.samples.basic.events.MessageEvent;
@@ -10,7 +10,7 @@ package ssen.mvc.samples.basic.view {
 
 	public class MessageUpdateMediator implements IMediator {
 		[Inject]
-		public var dispatcher:IContextDispatcher;
+		public var eventBus:IEventBus;
 
 		[Inject]
 		public var model:MessageModel;
@@ -24,8 +24,8 @@ package ssen.mvc.samples.basic.view {
 		}
 
 		public function onRegister():void {
-			dispatcher.addEventListener(MessageEvent.UPDATED_MESSAGE, updatedMessage);
-			dispatcher.addEventListener(MessageErrorEvent.UPDATE_FAILED, updateFailed);
+			eventBus.addEventListener(MessageEvent.UPDATED_MESSAGE, updatedMessage);
+			eventBus.addEventListener(MessageErrorEvent.UPDATE_FAILED, updateFailed);
 			view.addEventListener(view.SUBMIT, submitHandler);
 
 			model.getMessage(messageId, function(message:Message):void {
@@ -36,8 +36,8 @@ package ssen.mvc.samples.basic.view {
 		}
 
 		public function onRemove():void {
-			dispatcher.removeEventListener(MessageEvent.UPDATED_MESSAGE, updatedMessage);
-			dispatcher.removeEventListener(MessageErrorEvent.UPDATE_FAILED, updateFailed);
+			eventBus.removeEventListener(MessageEvent.UPDATED_MESSAGE, updatedMessage);
+			eventBus.removeEventListener(MessageErrorEvent.UPDATE_FAILED, updateFailed);
 			view.removeEventListener(view.SUBMIT, submitHandler);
 			view.deconstruct();
 			view=null;
@@ -47,7 +47,7 @@ package ssen.mvc.samples.basic.view {
 			var str:String=view.getText();
 
 			if (str === "") {
-				dispatcher.dispatch(new MessageErrorEvent(MessageErrorEvent.TEXT_IS_BLANK));
+				eventBus.dispatchEvent(new MessageErrorEvent(MessageErrorEvent.TEXT_IS_BLANK));
 				return;
 			}
 
@@ -57,7 +57,7 @@ package ssen.mvc.samples.basic.view {
 			evt.messageId=messageId;
 			evt.text=str;
 
-			dispatcher.dispatch(evt);
+			eventBus.dispatchEvent(evt);
 		}
 
 		private function updateFailed(event:MessageErrorEvent):void {
