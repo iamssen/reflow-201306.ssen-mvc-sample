@@ -3,32 +3,6 @@ body {
 	font-size: medium;
 }
 
-.MXMLASDoc {
-	color: #3f5fbf;
-}
-
-.MXMLComment {
-	color: #800000;
-}
-
-.MXMLComponent_Tag {
-	color: #0000ff;
-}
-
-.MXMLDefault_Text {
-}
-
-.MXMLProcessing_Instruction {
-}
-
-.MXMLSpecial_Tag {
-	color: #006633;
-}
-
-.MXMLString {
-	color: #990000;
-}
-
 .ActionScriptASDoc {
 	color: #3f5fbf;
 }
@@ -134,6 +108,32 @@ body {
 }
 
 .CSSString {
+	color: #990000;
+}
+
+.MXMLASDoc {
+	color: #3f5fbf;
+}
+
+.MXMLComment {
+	color: #800000;
+}
+
+.MXMLComponent_Tag {
+	color: #0000ff;
+}
+
+.MXMLDefault_Text {
+}
+
+.MXMLProcessing_Instruction {
+}
+
+.MXMLSpecial_Tag {
+	color: #006633;
+}
+
+.MXMLString {
 	color: #990000;
 }
 

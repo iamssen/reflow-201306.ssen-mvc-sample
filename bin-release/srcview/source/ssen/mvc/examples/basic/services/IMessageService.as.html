@@ -1,0 +1,25 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>IMessageService.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">ssen</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">mvc</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">examples</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">basic</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">services</span> <span class="ActionScriptBracket/Brace">{</span>
+<span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">ssen</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">common</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">IAsyncUnit</span>;
+
+<span class="ActionScriptASDoc">/** Message Service Model */</span>
+<span class="ActionScriptReserved">public</span> <span class="ActionScriptinterface">interface</span> <span class="ActionScriptDefault_Text">IMessageService</span> <span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">addMessage</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">text</span>:<span class="ActionScriptDefault_Text">String</span><span class="ActionScriptBracket/Brace">)</span>:<span class="ActionScriptDefault_Text">IAsyncUnit</span>;
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">updateMessage</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span>:<span class="ActionScriptDefault_Text">int</span><span class="ActionScriptOperator">,</span> <span class="ActionScriptDefault_Text">text</span>:<span class="ActionScriptDefault_Text">String</span><span class="ActionScriptBracket/Brace">)</span>:<span class="ActionScriptDefault_Text">IAsyncUnit</span>;
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getMessage</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span>:<span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">)</span>:<span class="ActionScriptDefault_Text">IAsyncUnit</span>;
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">getMessages</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">startId</span>:<span class="ActionScriptDefault_Text">int</span><span class="ActionScriptOperator">=</span>0<span class="ActionScriptOperator">,</span> <span class="ActionScriptDefault_Text">endId</span>:<span class="ActionScriptDefault_Text">int</span><span class="ActionScriptOperator">=</span>2147483647<span class="ActionScriptBracket/Brace">)</span>:<span class="ActionScriptDefault_Text">IAsyncUnit</span>;
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">removeMessage</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">id</span>:<span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">)</span>:<span class="ActionScriptDefault_Text">IAsyncUnit</span>;
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">removeMessages</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">ids</span>:<span class="ActionScriptDefault_Text">Vector</span><span class="ActionScriptBracket/Brace">.&lt;</span><span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">&gt;</span><span class="ActionScriptBracket/Brace">)</span>:<span class="ActionScriptDefault_Text">IAsyncUnit</span>;
+    <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">removeAllMessages</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptBracket/Brace">)</span>:<span class="ActionScriptDefault_Text">IAsyncUnit</span>;
+<span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+</pre></body>
+</html>

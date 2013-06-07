@@ -1,50 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <index>
-	<title>Source of SSenMvcFramework.Basic</title>
+	<title>Source of ssenkit.examples.mvc.basic</title>
 	<nodes>
 		<node label="libs">
 		</node>
 		<node label="src">
-			<node icon="packageIcon" label="ssen.mvc.samples.basic" expanded="true">
-				<node icon="mxmlIcon" label="BasicSample.mxml" url="source/ssen/mvc/samples/basic/BasicSample.mxml.html"/>
-				<node icon="actionScriptIcon" label="BasicSampleContext.as" url="source/ssen/mvc/samples/basic/BasicSampleContext.as.html"/>
+			<node icon="packageIcon" label="ssen.mvc.examples.basic" expanded="true">
+				<node icon="mxmlIcon" label="BasicExample.mxml" url="source/ssen/mvc/examples/basic/BasicExample.mxml.html"/>
+				<node icon="actionScriptIcon" label="BasicExampleContext.as" url="source/ssen/mvc/examples/basic/BasicExampleContext.as.html"/>
 			</node>
-			<node icon="packageIcon" label="ssen.mvc.samples.basic.controller" expanded="true">
-				<node icon="actionScriptIcon" label="AddMessage.as" url="source/ssen/mvc/samples/basic/controller/AddMessage.as.html"/>
-				<node icon="actionScriptIcon" label="RemoveMessage.as" url="source/ssen/mvc/samples/basic/controller/RemoveMessage.as.html"/>
-				<node icon="actionScriptIcon" label="StartUpdateMessage.as" url="source/ssen/mvc/samples/basic/controller/StartUpdateMessage.as.html"/>
-				<node icon="actionScriptIcon" label="UpdateMessage.as" url="source/ssen/mvc/samples/basic/controller/UpdateMessage.as.html"/>
+			<node icon="packageIcon" label="ssen.mvc.examples.basic.commands" expanded="true">
+				<node icon="actionScriptIcon" label="AddMessage.as" url="source/ssen/mvc/examples/basic/commands/AddMessage.as.html"/>
+				<node icon="actionScriptIcon" label="RemoveMessage.as" url="source/ssen/mvc/examples/basic/commands/RemoveMessage.as.html"/>
+				<node icon="actionScriptIcon" label="StartUpdateMessage.as" url="source/ssen/mvc/examples/basic/commands/StartUpdateMessage.as.html"/>
+				<node icon="actionScriptIcon" label="UpdateMessage.as" url="source/ssen/mvc/examples/basic/commands/UpdateMessage.as.html"/>
 			</node>
-			<node icon="packageIcon" label="ssen.mvc.samples.basic.events" expanded="true">
-				<node icon="actionScriptIcon" label="MessageErrorEvent.as" url="source/ssen/mvc/samples/basic/events/MessageErrorEvent.as.html"/>
-				<node icon="actionScriptIcon" label="MessageEvent.as" url="source/ssen/mvc/samples/basic/events/MessageEvent.as.html"/>
+			<node icon="packageIcon" label="ssen.mvc.examples.basic.events" expanded="true">
+				<node icon="actionScriptIcon" label="MessageErrorEvent.as" url="source/ssen/mvc/examples/basic/events/MessageErrorEvent.as.html"/>
+				<node icon="actionScriptIcon" label="MessageEvent.as" url="source/ssen/mvc/examples/basic/events/MessageEvent.as.html"/>
 			</node>
-			<node icon="packageIcon" label="ssen.mvc.samples.basic.model" expanded="true">
-				<node icon="actionScriptIcon" label="LocalMessageModel.as" url="source/ssen/mvc/samples/basic/model/LocalMessageModel.as.html"/>
-				<node icon="actionScriptIcon" label="Message.as" url="source/ssen/mvc/samples/basic/model/Message.as.html"/>
-				<node icon="actionScriptIcon" label="MessageModel.as" url="source/ssen/mvc/samples/basic/model/MessageModel.as.html"/>
+			<node icon="packageIcon" label="ssen.mvc.examples.basic.models" expanded="true">
+				<node icon="actionScriptIcon" label="Message.as" url="source/ssen/mvc/examples/basic/models/Message.as.html"/>
 			</node>
-			<node icon="packageIcon" label="ssen.mvc.samples.basic.view" expanded="true">
-				<node icon="actionScriptIcon" label="Dummy.as" url="source/ssen/mvc/samples/basic/view/Dummy.as.html"/>
-				<node icon="actionScriptIcon" label="DummyMediator.as" url="source/ssen/mvc/samples/basic/view/DummyMediator.as.html"/>
-				<node icon="mxmlIcon" label="DummySkin.mxml" url="source/ssen/mvc/samples/basic/view/DummySkin.mxml.html"/>
-				<node icon="actionScriptIcon" label="MessageInput.as" url="source/ssen/mvc/samples/basic/view/MessageInput.as.html"/>
-				<node icon="actionScriptIcon" label="MessageInputMediator.as" url="source/ssen/mvc/samples/basic/view/MessageInputMediator.as.html"/>
-				<node icon="mxmlIcon" label="MessageInputSkin.mxml" url="source/ssen/mvc/samples/basic/view/MessageInputSkin.mxml.html"/>
-				<node icon="actionScriptIcon" label="MessageLog.as" url="source/ssen/mvc/samples/basic/view/MessageLog.as.html"/>
-				<node icon="mxmlIcon" label="MessageLogListRenderer.mxml" url="source/ssen/mvc/samples/basic/view/MessageLogListRenderer.mxml.html"/>
-				<node icon="actionScriptIcon" label="MessageLogMediator.as" url="source/ssen/mvc/samples/basic/view/MessageLogMediator.as.html"/>
-				<node icon="mxmlIcon" label="MessageLogSkin.mxml" url="source/ssen/mvc/samples/basic/view/MessageLogSkin.mxml.html"/>
-				<node icon="actionScriptIcon" label="MessageRenderer.as" url="source/ssen/mvc/samples/basic/view/MessageRenderer.as.html"/>
-				<node icon="actionScriptIcon" label="MessageRendererMediator.as" url="source/ssen/mvc/samples/basic/view/MessageRendererMediator.as.html"/>
-				<node icon="actionScriptIcon" label="MessageUpdate.as" url="source/ssen/mvc/samples/basic/view/MessageUpdate.as.html"/>
-				<node icon="actionScriptIcon" label="MessageUpdateMediator.as" url="source/ssen/mvc/samples/basic/view/MessageUpdateMediator.as.html"/>
-				<node icon="mxmlIcon" label="MessageUpdateSkin.mxml" url="source/ssen/mvc/samples/basic/view/MessageUpdateSkin.mxml.html"/>
+			<node icon="packageIcon" label="ssen.mvc.examples.basic.services" expanded="true">
+				<node icon="actionScriptIcon" label="IMessageService.as" url="source/ssen/mvc/examples/basic/services/IMessageService.as.html"/>
+				<node icon="actionScriptIcon" label="LocalMessageService.as" url="source/ssen/mvc/examples/basic/services/LocalMessageService.as.html"/>
 			</node>
-			<node icon="mxmlAppIcon" selected="true" label="Main.mxml" url="source/Main.mxml.html"/>
+			<node icon="packageIcon" label="ssen.mvc.examples.basic.views" expanded="true">
+				<node icon="mxmlIcon" label="LogViewer.mxml" url="source/ssen/mvc/examples/basic/views/LogViewer.mxml.html"/>
+				<node icon="actionScriptIcon" label="LogViewerMediator.as" url="source/ssen/mvc/examples/basic/views/LogViewerMediator.as.html"/>
+				<node icon="mxmlIcon" label="MessageInput.mxml" url="source/ssen/mvc/examples/basic/views/MessageInput.mxml.html"/>
+				<node icon="actionScriptIcon" label="MessageInputMediator.as" url="source/ssen/mvc/examples/basic/views/MessageInputMediator.as.html"/>
+				<node icon="mxmlIcon" label="MessageLog.mxml" url="source/ssen/mvc/examples/basic/views/MessageLog.mxml.html"/>
+				<node icon="mxmlIcon" label="MessageLogListRenderer.mxml" url="source/ssen/mvc/examples/basic/views/MessageLogListRenderer.mxml.html"/>
+				<node icon="actionScriptIcon" label="MessageLogListRendererMediator.as" url="source/ssen/mvc/examples/basic/views/MessageLogListRendererMediator.as.html"/>
+				<node icon="actionScriptIcon" label="MessageLogMediator.as" url="source/ssen/mvc/examples/basic/views/MessageLogMediator.as.html"/>
+				<node icon="mxmlIcon" label="MessageUpdate.mxml" url="source/ssen/mvc/examples/basic/views/MessageUpdate.mxml.html"/>
+				<node icon="actionScriptIcon" label="MessageUpdateMediator.as" url="source/ssen/mvc/examples/basic/views/MessageUpdateMediator.as.html"/>
+			</node>
+			<node icon="mxmlAppIcon" selected="true" label="BasicExample.mxml" url="source/BasicExample.mxml.html"/>
 		</node>
 	</nodes>
-	<zipfile label="Download source (ZIP, 24K)" url="SSenMvcFramework.Basic.zip">
+	<zipfile label="Download source (ZIP, 20K)" url="ssenkit.examples.mvc.basic.zip">
 	</zipfile>
 	<sdklink label="Download Flex SDK" url="http://www.adobe.com/go/flex451_sdk_download">
 	</sdklink>

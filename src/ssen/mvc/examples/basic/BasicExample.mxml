@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:views="ssen.mvc.examples.basic.views.*" preinitialize="initialContext()"
+		 implements="ssen.mvc.IContextView">
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			
+			import spark.components.Application;
+			
+			import ssen.mvc.IContext;
+
+			private var context:BasicExampleContext;
+
+			public function get contextInitialized():Boolean {
+				return context !== null;
+			}
+
+			public function initialContext(parentContext:IContext=null):void {
+				if (!context) {
+					context=new BasicExampleContext(this, parentContext);
+				}
+			}
+
+			public function getStage():Object {
+				var app:Application=FlexGlobals.topLevelApplication as Application;
+				return app.systemManager.stage;
+			}
+		]]>
+	</fx:Script>
+
+	<s:layout>
+		<s:VerticalLayout paddingTop="5" paddingBottom="5" paddingLeft="5" paddingRight="5" gap="10" horizontalAlign="left" verticalAlign="top"/>
+	</s:layout>
+
+	<s:Group width="100%" height="100%">
+		<s:layout>
+			<s:VerticalLayout paddingTop="0" paddingBottom="0" paddingLeft="0" paddingRight="0" gap="5" horizontalAlign="left" verticalAlign="top"/>
+		</s:layout>
+
+		<views:MessageLog width="100%" height="100%"/>
+		<views:MessageInput width="100%" height="25"/>
+	</s:Group>
+
+	<views:LogViewer width="100%" height="100"/>
+</s:Group>
