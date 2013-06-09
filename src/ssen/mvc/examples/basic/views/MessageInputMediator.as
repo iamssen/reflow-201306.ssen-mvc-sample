@@ -30,7 +30,7 @@ public class MessageInputMediator implements IMediator {
 	public function onRegister():void {
 		evtGatherer=new EvtGatherer;
 
-		evtGatherer.add(eventBus.addEventListener(MessageEvent.ADDED_MESSAGE, createdNewMessage));
+		evtGatherer.add(eventBus.addEventListener(MessageEvent.ADDED_MESSAGE, addedMessage));
 		evtGatherer.add(eventBus.addEventListener(MessageErrorEvent.ADD_FAILED, addMessageFailed));
 	}
 
@@ -72,7 +72,7 @@ public class MessageInputMediator implements IMediator {
 		view.enabled=true;
 	}
 
-	private function createdNewMessage(event:MessageEvent):void {
+	private function addedMessage(event:MessageEvent):void {
 		// 메세지 입력이 성공한 경우. 기존 입력을 지워주고, 유저가 입력 가능하도록 활성화 시켜줌
 		view.enabled=true;
 		view.textInput.text="";

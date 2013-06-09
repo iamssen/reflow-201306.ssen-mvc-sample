@@ -6,6 +6,7 @@ import ssen.mvc.IEventBus;
 import ssen.mvc.examples.basic.events.MessageErrorEvent;
 import ssen.mvc.examples.basic.events.MessageEvent;
 import ssen.mvc.examples.basic.models.Message;
+import ssen.mvc.examples.basic.models.MessageModel;
 import ssen.mvc.examples.basic.services.IMessageService;
 
 public class UpdateMessage implements ICommand {
@@ -18,6 +19,9 @@ public class UpdateMessage implements ICommand {
 	[Inject]
 	public var eventBus:IEventBus;
 
+	[Inject]
+	public var model:MessageModel;
+
 	//=========================================================
 	// execute
 	//=========================================================
@@ -26,19 +30,20 @@ public class UpdateMessage implements ICommand {
 		var unit:IAsyncUnit=service.updateMessage(evt.messageId, evt.text);
 
 		unit.result=function(message:Message):void {
-			evt=new MessageEvent(MessageEvent.UPDATED_MESSAGE);
-			evt.message=message;
-			eventBus.dispatchEvent(evt);
+			model.updated(message);
+			chain.next();
 		};
 
 		unit.fault=function(error:Error):void {
 			eventBus.dispatchEvent(new MessageErrorEvent(MessageErrorEvent.UPDATE_FAILED));
+			chain.next();
 		};
 	}
 
 	public function dispose():void {
 		service=null;
 		eventBus=null;
+		model=null;
 	}
 
 

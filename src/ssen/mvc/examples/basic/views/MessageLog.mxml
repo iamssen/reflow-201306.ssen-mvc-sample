@@ -2,15 +2,15 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/mx">
 	<fx:Script>
 		<![CDATA[
-			import mx.collections.IList;
+			import ssen.mvc.examples.basic.models.MessageModel;
 
 			[Bindable]
-			internal var dataProvider:IList;
+			internal var model:MessageModel;
 		]]>
 	</fx:Script>
 
 	<s:Scroller width="100%" height="100%">
-		<s:DataGroup id="list" dataProvider="{dataProvider}" itemRenderer="ssen.mvc.examples.basic.views.MessageLogListRenderer">
+		<s:DataGroup id="list" dataProvider="{model.list}" itemRenderer="ssen.mvc.examples.basic.views.MessageLogListRenderer">
 			<s:layout>
 				<s:VerticalLayout paddingTop="5" paddingBottom="5" paddingLeft="5" paddingRight="5" gap="10" horizontalAlign="left" verticalAlign="top"/>
 			</s:layout>

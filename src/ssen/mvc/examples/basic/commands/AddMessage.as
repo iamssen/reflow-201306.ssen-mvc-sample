@@ -6,6 +6,7 @@ import ssen.mvc.IEventBus;
 import ssen.mvc.examples.basic.events.MessageErrorEvent;
 import ssen.mvc.examples.basic.events.MessageEvent;
 import ssen.mvc.examples.basic.models.Message;
+import ssen.mvc.examples.basic.models.MessageModel;
 import ssen.mvc.examples.basic.services.IMessageService;
 
 public class AddMessage implements ICommand {
@@ -18,6 +19,9 @@ public class AddMessage implements ICommand {
 	[Inject]
 	public var eventBus:IEventBus;
 
+	[Inject]
+	public var model:MessageModel;
+
 	//=========================================================
 	// execute
 	//=========================================================
@@ -26,9 +30,7 @@ public class AddMessage implements ICommand {
 		var unit:IAsyncUnit=service.addMessage(evt.text);
 
 		unit.result=function(message:Message):void {
-			evt=new MessageEvent(MessageEvent.ADDED_MESSAGE);
-			evt.message=message;
-			eventBus.dispatchEvent(evt);
+			model.added(message);
 			chain.next();
 		};
 
@@ -41,6 +43,7 @@ public class AddMessage implements ICommand {
 	public function dispose():void {
 		service=null;
 		eventBus=null;
+		model=null;
 	}
 }
 }

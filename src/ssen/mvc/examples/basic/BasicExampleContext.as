@@ -7,6 +7,7 @@ import ssen.mvc.examples.basic.commands.RemoveMessage;
 import ssen.mvc.examples.basic.commands.StartUpdateMessage;
 import ssen.mvc.examples.basic.commands.UpdateMessage;
 import ssen.mvc.examples.basic.events.MessageEvent;
+import ssen.mvc.examples.basic.models.MessageModel;
 import ssen.mvc.examples.basic.services.IMessageService;
 import ssen.mvc.examples.basic.services.LocalMessageService;
 import ssen.mvc.examples.basic.views.LogViewer;
@@ -29,6 +30,7 @@ public class BasicExampleContext extends Context {
 	// setting dependent
 	//=========================================================
 	override protected function mapDependency():void {
+		injector.mapSingleton(MessageModel);
 		injector.mapSingleton(IMessageService, LocalMessageService);
 
 		viewInjector.mapView(LogViewer, LogViewerMediator);
