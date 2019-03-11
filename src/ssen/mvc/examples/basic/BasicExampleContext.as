@@ -1,5 +1,5 @@
 package ssen.mvc.examples.basic {
-import ssen.displaykit.Context;
+import ssen.mvc.Context;
 import ssen.mvc.IContext;
 import ssen.mvc.IContextView;
 import ssen.mvc.examples.basic.commands.AddMessage;
